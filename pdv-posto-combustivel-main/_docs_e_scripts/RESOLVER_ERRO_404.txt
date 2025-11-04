@@ -1,0 +1,80 @@
+# ========================================
+# GUIA COMPLETO - RESOLVER ERRO 404
+# ========================================
+
+## O QUE FOI CORRIGIDO:
+
+O problema era que o Spring Boot NAO estava encontrando os controllers REST (ContatoController, PessoaController, etc.).
+
+Erro anterior: "No static resource api/contatos"
+Solucao: Adicionei @ComponentScan na classe principal
+
+## COMO USAR AGORA:
+
+### PASSO 1: PARE TODOS OS SERVICOS
+- Se o backend estiver rodando, PARE (Ctrl+C)
+- Se o frontend estiver rodando, PARE (Ctrl+C)
+
+### PASSO 2: INICIE O BACKEND
+Execute: iniciar_backend_h2.bat
+
+AGUARDE ver esta mensagem no console:
+"Started PdvpostocombustivelApplication in X.XXX seconds"
+
+### PASSO 3: TESTE O BACKEND
+Execute: testar_backend.bat
+
+RESULTADO ESPERADO:
+- Para /api/contatos: [] (lista vazia - OK!)
+- Para /api/pessoas: [] (lista vazia - OK!)
+
+Se aparecer [] significa que esta funcionando!
+
+### PASSO 4: INICIE O FRONTEND
+Execute: iniciar_frontend.bat
+
+### PASSO 5: TESTE O SISTEMA
+1. Abra o gerenciador de PESSOAS
+2. Adicione uma pessoa
+3. Abra o gerenciador de CONTATOS
+4. Adicione um contato
+
+TUDO DEVE FUNCIONAR AGORA!
+
+### PASSO 6: VISUALIZAR DADOS NO H2 CONSOLE
+1. Abra o navegador: http://localhost:8080/h2-console
+2. JDBC URL: jdbc:h2:mem:pdvpostocombustivel
+3. Username: sa
+4. Password: (deixe em branco)
+5. Clique em Connect
+6. Execute: SELECT * FROM pessoas;
+7. Execute: SELECT * FROM contatos;
+
+## SE AINDA DER ERRO 404:
+
+1. Verifique se esta rodando o backend da pasta CORRETA (pdv-posto-combustivel/)
+2. No console do backend, procure por:
+   - "Mapped GET /api/contatos"
+   - "Mapped GET /api/pessoas"
+
+   Se NAO aparecer essas mensagens, o problema persiste.
+
+## COMANDOS PARA REINICIAR TUDO:
+
+1. PARE backend (Ctrl+C)
+2. PARE frontend (Ctrl+C)
+3. Execute: iniciar_backend_h2.bat
+4. Aguarde iniciar completamente
+5. Execute: testar_backend.bat (deve mostrar [])
+6. Execute: iniciar_frontend.bat
+7. Teste os gerenciadores
+
+## ARQUIVOS CRIADOS/MODIFICADOS:
+
+- PdvpostocombustivelApplication.java (adicionado @ComponentScan)
+- application.properties (perfil H2 ativo)
+- application-h2.properties (configuracao H2)
+- application-postgres.properties (configuracao PostgreSQL)
+
+========================================
+

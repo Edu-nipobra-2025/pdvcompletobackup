@@ -1,0 +1,47 @@
+# Configuracao PDV Posto Combustivel
+spring.application.name=pdvpostocombustivel
+server.port=8080
+
+# FORCAR USO EXCLUSIVO DO POSTGRESQL
+# IMPORTANTE: Copie este arquivo para application.properties e configure sua senha
+spring.datasource.url=jdbc:postgresql://localhost:5432/pdvpostocombustivel
+spring.datasource.username=postgres
+spring.datasource.password=SUA_SENHA_AQUI
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA/Hibernate
+spring.jpa.database=POSTGRESQL
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# Desabilitar H2 completamente
+spring.h2.console.enabled=false
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration
+
+# Database initialization
+spring.sql.init.mode=never
+spring.sql.init.platform=postgresql
+
+# HikariCP - Pool de conexoes
+spring.datasource.hikari.connection-test-query=SELECT 1
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=5
+
+# Logging para confirmar PostgreSQL
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+logging.level.com.zaxxer.hikari=DEBUG
+
+# Swagger/OpenAPI
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.swagger-ui.tagsSorter=alpha
+
+# Encoding
+spring.http.encoding.force=true
+server.servlet.encoding.charset=UTF-8
+server.servlet.encoding.force=true
+
