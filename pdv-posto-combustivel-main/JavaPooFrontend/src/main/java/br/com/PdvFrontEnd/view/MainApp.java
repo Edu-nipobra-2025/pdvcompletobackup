@@ -293,11 +293,12 @@ public class MainApp {
         DecimalFormat df = new DecimalFormat("#,##0.00");
 
         StringBuilder receiptText = new StringBuilder();
+        receiptText.append("                 POSTO PDV         \n");
+        receiptText.append("CNPJ do Emissor: ").append(cnpj).append("\n");
         receiptText.append("---------------------------------------------\n");
         receiptText.append("           CUPOM FISCAL ELETRÔNICO         \n");
         receiptText.append("---------------------------------------------\n");
         receiptText.append("CNPJ/CPF do Consumidor: 123.456.789-00\n");
-        receiptText.append("CNPJ do Emissor: ").append(cnpj).append("\n");
         receiptText.append("Data de Emissão: ").append(emissionDate).append("\n");
         receiptText.append("---------------------------------------------\n");
         receiptText.append(String.format("%-13s %-5s %-3s %-10s %-10s\n", "PRODUTO", "QTD", "UN", "VL UNIT", "VL TOTAL"));
