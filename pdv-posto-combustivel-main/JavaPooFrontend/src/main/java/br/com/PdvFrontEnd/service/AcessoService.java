@@ -22,7 +22,6 @@ public class AcessoService {
             );
 
             HttpClient.post("/acessos", request, AcessoResponse.class);
-            // Mensagem removida para não aparecer no login automático
         } catch (Exception e) {
             throw new RuntimeException("Erro ao adicionar acesso: " + e.getMessage(), e);
         }

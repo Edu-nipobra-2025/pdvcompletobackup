@@ -30,7 +30,7 @@ public class PessoaList extends JFrame {
 
     private void initComponents() {
         setTitle("Gerenciamento de Pessoas");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1000, 550);
         setLocationRelativeTo(null);
 

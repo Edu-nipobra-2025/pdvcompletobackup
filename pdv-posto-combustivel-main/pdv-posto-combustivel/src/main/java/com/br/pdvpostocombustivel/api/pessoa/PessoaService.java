@@ -20,13 +20,11 @@ public class PessoaService {
         this.repository = repository;
     }
 
-    // CREATE
     public PessoaResponse create(PessoaRequest req) {
         Pessoa novaPessoa = toEntity(req);
         return toResponse(repository.save(novaPessoa));
     }
 
-    // READ by ID
     @Transactional(readOnly = true)
     public PessoaResponse getById(Long id) {
         Pessoa p = repository.findById(id)
@@ -34,7 +32,6 @@ public class PessoaService {
         return toResponse(p);
     }
 
-    // READ by CPF/CNPJ
     @Transactional(readOnly = true)
     public PessoaResponse getByCpfCnpj(String cpfCnpj) {
         Pessoa p = repository.findByCpfCnpj(cpfCnpj)

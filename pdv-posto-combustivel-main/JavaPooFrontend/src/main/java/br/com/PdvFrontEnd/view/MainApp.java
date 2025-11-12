@@ -25,10 +25,8 @@ public class MainApp {
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            // Inicia o sistema pelo login
             SessionManager sessionManager = SessionManager.getInstance();
 
-            // Se não existir usuário cadastrado, abre a tela de cadastro
             if (!sessionManager.userExists()) {
                 new RegisterView().setVisible(true);
             } else {
@@ -46,12 +44,10 @@ public class MainApp {
             mainFrame.setLocationRelativeTo(null);
             mainFrame.setLayout(new BorderLayout(10, 10));
 
-            // Painel de Botões à Esquerda
             JPanel buttonPanel = new JPanel(new GridLayout(0, 1, 10, 10));
             buttonPanel.setBackground(SECONDARY_COLOR);
             buttonPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 
-            // Adicionar botões de gerenciamento
             buttonPanel.add(createStyledButton("Gerenciar Pessoas", e -> new PessoaList(new PessoaService()).setVisible(true)));
             buttonPanel.add(createStyledButton("Gerenciar Preços", e -> new PrecoList(new PrecoService()).setVisible(true)));
             buttonPanel.add(createStyledButton("Gerenciar Produtos", e -> new ProdutoList(new ProdutoService()).setVisible(true)));
@@ -312,7 +308,6 @@ public class MainApp {
         receiptText.append("---------------------------------------------\n");
         receiptText.append(String.format("%-15s %28s\n", "PREÇO FINAL:", "R$ " + df.format(finalPrice)));
         receiptText.append("---------------------------------------------\n");
-
 
         receiptArea.setText(receiptText.toString());
         receiptDialog.add(new JScrollPane(receiptArea), BorderLayout.CENTER);

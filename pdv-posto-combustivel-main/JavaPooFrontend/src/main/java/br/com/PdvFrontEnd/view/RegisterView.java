@@ -113,24 +113,6 @@ public class RegisterView extends JFrame {
         mainPanel.add(btnRegister);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-        // Botão Voltar ao Login
-        JButton btnBackToLogin = createStyledButton("Já tenho cadastro");
-        btnBackToLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnBackToLogin.setMaximumSize(new Dimension(300, 40));
-        btnBackToLogin.setBackground(ACCENT_COLOR);
-        btnBackToLogin.addActionListener(e -> {
-            if (sessionManager.userExists()) {
-                new LoginView().setVisible(true);
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        "Você precisa se cadastrar primeiro!",
-                        "Aviso",
-                        JOptionPane.WARNING_MESSAGE);
-            }
-        });
-        mainPanel.add(btnBackToLogin);
-
         add(mainPanel, BorderLayout.CENTER);
 
         // Enter para cadastrar
@@ -219,4 +201,3 @@ public class RegisterView extends JFrame {
         return button;
     }
 }
-

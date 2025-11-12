@@ -101,7 +101,7 @@ public class CustoForm extends JFrame {
                 BorderFactory.createEmptyBorder(5, 10, 5, 10)));
         mainPanel.add(txtMargemLucro);
 
-        mainPanel.add(new JLabel("Data de Processamento (dd/MM/yyyy):"));
+        mainPanel.add(new JLabel("Data de Processamento (DD/MM/YYYY):"));
         txtDataProcessamento = new JTextField();
         txtDataProcessamento.setBackground(Color.WHITE);
         txtDataProcessamento.setForeground(SECONDARY_COLOR);
@@ -118,7 +118,7 @@ public class CustoForm extends JFrame {
             txtCustoVariavel.setText(String.valueOf(custoEmEdicao.getCustoVariavel()));
             txtCustoFixo.setText(String.valueOf(custoEmEdicao.getCustoFixo()));
             txtMargemLucro.setText(String.valueOf(custoEmEdicao.getMargemLucro()));
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("DD/MM/YYYY");
             txtDataProcessamento.setText(dateFormat.format(custoEmEdicao.getDataProcessamento()));
         }
 
@@ -175,7 +175,7 @@ public class CustoForm extends JFrame {
             double custoVariavel = Double.parseDouble(txtCustoVariavel.getText());
             double custoFixo = Double.parseDouble(txtCustoFixo.getText());
             double margemLucro = Double.parseDouble(txtMargemLucro.getText());
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("DD/MM/YYYY");
             Date dataProcessamento = dateFormat.parse(txtDataProcessamento.getText());
 
             if (custoEmEdicao != null) {

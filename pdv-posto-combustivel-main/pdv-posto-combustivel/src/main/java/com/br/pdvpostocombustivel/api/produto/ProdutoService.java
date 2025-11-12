@@ -33,7 +33,7 @@ public class ProdutoService {
 
     public ProdutoResponse buscarPorId(Long id) {
         Produto produto = produtoRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado"));
+                .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado ou inexistente"));
         return converterParaResponse(produto);
     }
 
@@ -46,7 +46,7 @@ public class ProdutoService {
     @Transactional
     public ProdutoResponse atualizar(Long id, ProdutoRequest request) {
         Produto produto = produtoRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado"));
+                .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado ou inexistente"));
 
         produto.setNome(request.getNome());
         produto.setReferencia(request.getReferencia());
@@ -61,7 +61,7 @@ public class ProdutoService {
     @Transactional
     public void deletar(Long id) {
         if (!produtoRepository.existsById(id)) {
-            throw new EntityNotFoundException("Produto não encontrado");
+            throw new EntityNotFoundException("Produto não encontrado ou inexistente");
         }
         produtoRepository.deleteById(id);
     }

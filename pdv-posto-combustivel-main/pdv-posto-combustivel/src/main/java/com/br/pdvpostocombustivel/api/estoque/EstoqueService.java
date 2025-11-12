@@ -61,7 +61,7 @@ public class EstoqueService {
     @Transactional
     public void deletar(Long id) {
         if (!estoqueRepository.existsById(id)) {
-            throw new EntityNotFoundException("Estoque não encontrado");
+            throw new EntityNotFoundException("Estoque não encontrado ou inexistente");
         }
         estoqueRepository.deleteById(id);
     }

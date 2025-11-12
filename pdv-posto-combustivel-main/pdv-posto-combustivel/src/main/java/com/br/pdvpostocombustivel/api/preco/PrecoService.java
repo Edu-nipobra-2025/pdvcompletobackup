@@ -32,7 +32,7 @@ public class PrecoService {
 
     public PrecoResponse buscarPorId(Long id) {
         Preco preco = precoRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Preço não encontrado"));
+                .orElseThrow(() -> new EntityNotFoundException("Preço não encontrado ou inexistente"));
         return converterParaResponse(preco);
     }
 
@@ -45,7 +45,7 @@ public class PrecoService {
     @Transactional
     public PrecoResponse atualizar(Long id, PrecoRequest request) {
         Preco preco = precoRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Preço não encontrado"));
+                .orElseThrow(() -> new EntityNotFoundException("Preço não encontrado ou inexistente"));
 
         preco.setValor(request.getValor());
         if (request.getDataAlteracao() != null) {
@@ -62,7 +62,7 @@ public class PrecoService {
     @Transactional
     public void deletar(Long id) {
         if (!precoRepository.existsById(id)) {
-            throw new EntityNotFoundException("Preço não encontrado");
+            throw new EntityNotFoundException("Preço não encontrado ou inexistente");
         }
         precoRepository.deleteById(id);
     }
