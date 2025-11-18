@@ -1,8 +1,8 @@
-package  com.br.pdvpostocombustivel.api.pessoa;
+package com.br.pdvpostocombustivel.api.pessoa;
 
-
-import  com.br.pdvpostocombustivel.api.pessoa.dto.PessoaRequest;
-import  com.br.pdvpostocombustivel.api.pessoa.dto.PessoaResponse;
+import com.br.pdvpostocombustivel.api.pessoa.PessoaService;
+import com.br.pdvpostocombustivel.api.pessoa.dto.PessoaRequest;
+import com.br.pdvpostocombustivel.api.pessoa.dto.PessoaResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -58,4 +58,3 @@ public class PessoaController {
         service.delete(id);
     }
 }
-

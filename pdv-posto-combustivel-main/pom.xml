@@ -14,7 +14,7 @@
 
     <modules>
         <module>pdv-posto-combustivel</module>
-        <module>JavaPoo-Front-End-main</module>
+        <module>JavaPooFrontend</module>
     </modules>
 
     <properties>
@@ -48,4 +48,3 @@
     </build>
 
 </project>
-
