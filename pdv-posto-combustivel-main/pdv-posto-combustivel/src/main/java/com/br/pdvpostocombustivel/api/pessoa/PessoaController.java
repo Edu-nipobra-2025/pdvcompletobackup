@@ -1,12 +1,13 @@
 package com.br.pdvpostocombustivel.api.pessoa;
 
-import com.br.pdvpostocombustivel.api.pessoa.PessoaService;
 import com.br.pdvpostocombustivel.api.pessoa.dto.PessoaRequest;
 import com.br.pdvpostocombustivel.api.pessoa.dto.PessoaResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/pessoas")
@@ -20,8 +21,8 @@ public class PessoaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PessoaResponse create(@RequestBody PessoaRequest req) {
-        return service.create(req);
+    public PessoaResponse create(@RequestBody Map<String, String> payload) {
+        return service.create((PessoaRequest) payload);
     }
 
     @GetMapping("/{id}")
@@ -43,13 +44,13 @@ public class PessoaController {
     }
 
     @PutMapping("/{id}")
-    public PessoaResponse update(@PathVariable Long id, @RequestBody PessoaRequest req) {
-        return service.update(id, req);
+    public PessoaResponse update(@PathVariable Long id, @RequestBody Map<String, String> payload) {
+        return service.update(id, (PessoaRequest) payload);
     }
 
     @PatchMapping("/{id}")
-    public PessoaResponse patch(@PathVariable Long id, @RequestBody PessoaRequest req) {
-        return service.patch(id, req);
+    public PessoaResponse patch(@PathVariable Long id, @RequestBody Map<String, String> payload) {
+        return service.patch(id, (PessoaRequest) payload);
     }
 
     @DeleteMapping("/{id}")
